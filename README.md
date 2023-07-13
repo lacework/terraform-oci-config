@@ -27,7 +27,7 @@ account.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_lacework_oci_credentials"></a> [lacework\_oci\_credentials](#module\_lacework\_oci\_credentials) | ../terraform-oci-iam-user | n/a |
+| <a name="module_lacework_oci_credentials"></a> [lacework\_oci\_credentials](#module\_lacework\_oci\_credentials) | lacework/iam-user/oci | >= 0.2.0 |
 
 ## Resources
 
@@ -49,7 +49,7 @@ account.
 | <a name="input_integration_name"></a> [integration\_name](#input\_integration\_name) | Label for the OCI integration used within the Lacework platform | `string` | `"OCI CSPM Integration"` | no |
 | <a name="input_policy_name"></a> [policy\_name](#input\_policy\_name) | Name of the policy that governs the Lacework user's permissions (overrides base\_name) | `string` | `""` | no |
 | <a name="input_tenancy_id"></a> [tenancy\_id](#input\_tenancy\_id) | OCID of the OCI tenancy to be integrated with Lacework | `string` | n/a | yes |
-| <a name="input_user_email"></a> [user\_email](#input\_user\_email) | Optional email associated with the created user | `string` | `"lacework@lacework.net"` | no |
+| <a name="input_user_email"></a> [user\_email](#input\_user\_email) | Email associated with the created user | `string` | `"lacework@lacework.net"` | no |
 | <a name="input_user_name"></a> [user\_name](#input\_user\_name) | Name of the IAM user used for Lacework integration (overrides base\_name) | `string` | `""` | no |
 
 ## Outputs
@@ -61,3 +61,4 @@ account.
 | <a name="output_integration_guid"></a> [integration\_guid](#output\_integration\_guid) | Unique identifier for the integration used in by Lacework |
 | <a name="output_policy_ocid"></a> [policy\_ocid](#output\_policy\_ocid) | OCID of the policy created to manage permissions for the integration user |
 | <a name="output_user_ocid"></a> [user\_ocid](#output\_user\_ocid) | OCID of the user created for the Lacework integration |
+
