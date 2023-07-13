@@ -24,28 +24,28 @@ variable "freeform_tags" {
   description = "freeform tags for the resources created for Lacework CSPM integration"
 }
 
-variable "base_name" {
+variable "name_prefix" {
 	type = string
 	default = "lacework_cspm_integration"
-	description = "The OCI resources will have the names $${base_name}_{user,group,policy}"
+	description = "The OCI resources will have the names $${name_prefix}_{user,group,policy}"
 }
 
 variable "user_name" {
   type = string
   default = ""
-  description = "Name of the IAM user used for Lacework integration (overrides base_name)"
+  description = "Name of the IAM user used for Lacework integration (overrides name_prefix)"
 }
 
 variable "group_name" {
   type = string
   default = ""
-  description = "Name of the IAM group for the Lacework user (overrides base_name)"
+  description = "Name of the IAM group for the Lacework user (overrides name_prefix)"
 }
 
 variable "policy_name" {
   type = string
   default = ""
-  description = "Name of the policy that governs the Lacework user's permissions (overrides base_name)"
+  description = "Name of the policy that governs the Lacework user's permissions (overrides name_prefix)"
 }
 
 variable "integration_name" {

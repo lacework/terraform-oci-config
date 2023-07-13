@@ -3,7 +3,7 @@ module "lacework_oci_cfg_integration" {
   create = true
   tenancy_id = var.tenancy_ocid
   user_email = "example@example.com"
-  base_name = "lacework_example_base"
+  name_prefix = "lacework_example_prefix"
   user_name = "lacework_example_user"
   group_name = "lacework_example_group"
   policy_name = "lacework_policy_example"

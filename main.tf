@@ -1,15 +1,15 @@
 locals {
-  policy_name = length(var.policy_name) > 0 ? var.policy_name : "${var.base_name}_policy"
+  policy_name = length(var.policy_name) > 0 ? var.policy_name : "${var.name_prefix}_policy"
 }
 
 module "lacework_oci_credentials" {
   source        = "lacework/iam-user/oci"
-  version       = ">= 0.2.0"
+  version       = ">= 0.3.0"
   tenancy_id    = var.tenancy_id
   create        = var.create
   freeform_tags = var.freeform_tags
   email         = var.user_email
-  base_name     = var.base_name
+  name_prefix     = var.name_prefix
   user_name     = var.user_name
   group_name    = var.group_name
 }
@@ -59,4 +59,5 @@ resource "lacework_integration_oci_cfg" "lacework_integration" {
   home_region = data.oci_identity_region_subscriptions.home_region.region_subscriptions[0].region_name
   tenant_id   = data.oci_identity_tenancy.tenancy.id
   tenant_name = data.oci_identity_tenancy.tenancy.name
+  depends_on = [ oci_identity_policy.lacework_policy ]
 }
