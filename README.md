@@ -57,8 +57,10 @@ account.
 | Name | Description |
 |------|-------------|
 | <a name="output_created"></a> [created](#output\_created) | Was the OCI user created |
+| <a name="output_group_name"></a> [group\_name](#output\_group\_name) | The user name of the group created for Lacework integration |
 | <a name="output_group_ocid"></a> [group\_ocid](#output\_group\_ocid) | OCID of the group created to manage permissions for the integration user |
 | <a name="output_integration_guid"></a> [integration\_guid](#output\_integration\_guid) | Unique identifier for the integration used in by Lacework |
+| <a name="output_policy_name"></a> [policy\_name](#output\_policy\_name) | n/a |
 | <a name="output_policy_ocid"></a> [policy\_ocid](#output\_policy\_ocid) | OCID of the policy created to manage permissions for the integration user |
+| <a name="output_user_name"></a> [user\_name](#output\_user\_name) | The user name of the user created for Lacework integration |
 | <a name="output_user_ocid"></a> [user\_ocid](#output\_user\_ocid) | OCID of the user created for the Lacework integration |
-
