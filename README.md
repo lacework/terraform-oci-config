@@ -49,7 +49,7 @@ account.
 | <a name="input_integration_name"></a> [integration\_name](#input\_integration\_name) | Label for the OCI integration used within the Lacework platform | `string` | `"OCI CSPM Integration"` | no |
 | <a name="input_policy_name"></a> [policy\_name](#input\_policy\_name) | Name of the policy that governs the Lacework user's permissions (overrides base\_name) | `string` | `""` | no |
 | <a name="input_tenancy_id"></a> [tenancy\_id](#input\_tenancy\_id) | OCID of the OCI tenancy to be integrated with Lacework | `string` | n/a | yes |
-| <a name="input_user_email"></a> [user\_email](#input\_user\_email) | Email associated with the created user | `string` | `"lacework@lacework.net"` | no |
+| <a name="input_user_email"></a> [user\_email](#input\_user\_email) | Email associated with the created user | `string` | n/a | yes |
 | <a name="input_user_name"></a> [user\_name](#input\_user\_name) | Name of the IAM user used for Lacework integration (overrides base\_name) | `string` | `""` | no |
 
 ## Outputs

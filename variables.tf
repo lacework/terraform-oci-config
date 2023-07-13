@@ -5,6 +5,11 @@ variable "tenancy_id" {
   description = "OCID of the OCI tenancy to be integrated with Lacework"
 }
 
+variable "user_email" {
+  type = string
+  description = "Email associated with the created user"
+}
+
 # Optional
 
 variable "create" {
@@ -17,12 +22,6 @@ variable "freeform_tags" {
   type = map
   default = {}
   description = "freeform tags for the resources created for Lacework CSPM integration"
-}
-
-variable "user_email" {
-  type = string
-  default = "lacework@lacework.net"
-  description = "Email associated with the created user"
 }
 
 variable "base_name" {
