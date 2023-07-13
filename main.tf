@@ -3,7 +3,8 @@ locals {
 }
 
 module "lacework_oci_credentials" {
-  source        = "../terraform-oci-iam-user"
+  source        = "lacework/iam-user/oci"
+  version       = ">= 0.2.0"
   tenancy_id    = var.tenancy_id
   create        = var.create
   freeform_tags = var.freeform_tags
@@ -48,14 +49,14 @@ data "oci_identity_region_subscriptions" "home_region" {
 }
 
 resource "lacework_integration_oci_cfg" "lacework_integration" {
-  count = var.create ? 1 : 0
+  count     = var.create ? 1 : 0
   name      = var.integration_name
   user_ocid = module.lacework_oci_credentials.user_ocid
   credentials {
     private_key = module.lacework_oci_credentials.user_private_key_pem
     fingerprint = module.lacework_oci_credentials.user_public_key_fingerprint
   }
-  home_region  = data.oci_identity_region_subscriptions.home_region.region_subscriptions[0].region_name
+  home_region = data.oci_identity_region_subscriptions.home_region.region_subscriptions[0].region_name
   tenant_id   = data.oci_identity_tenancy.tenancy.id
   tenant_name = data.oci_identity_tenancy.tenancy.name
 }
