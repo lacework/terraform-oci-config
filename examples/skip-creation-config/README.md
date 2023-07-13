@@ -5,7 +5,7 @@ with creating any resources.
 
 ```hcl
 module "lacework_oci_cfg_integration" {
-  source = "../.."
+  source = "lacework/config/oci"
   create = false
   tenancy_id = var.tenancy_ocid
 }

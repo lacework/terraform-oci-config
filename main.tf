@@ -4,12 +4,12 @@ locals {
 
 module "lacework_oci_credentials" {
   source        = "lacework/iam-user/oci"
-  version       = ">= 0.3.0"
+  version       = "~> 0.3"
   tenancy_id    = var.tenancy_id
   create        = var.create
   freeform_tags = var.freeform_tags
   email         = var.user_email
-  name_prefix     = var.name_prefix
+  name_prefix   = var.name_prefix
   user_name     = var.user_name
   group_name    = var.group_name
 }
@@ -59,5 +59,5 @@ resource "lacework_integration_oci_cfg" "lacework_integration" {
   home_region = data.oci_identity_region_subscriptions.home_region.region_subscriptions[0].region_name
   tenant_id   = data.oci_identity_tenancy.tenancy.id
   tenant_name = data.oci_identity_tenancy.tenancy.name
-  depends_on = [ oci_identity_policy.lacework_policy ]
+  depends_on  = [oci_identity_policy.lacework_policy]
 }

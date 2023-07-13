@@ -5,7 +5,7 @@ using custom parameters.
 
 ```hcl
 module "lacework_oci_cfg_integration" {
-  source = "../.."
+  source = "lacework/config/oci"
   create = true
   tenancy_id = var.tenancy_ocid
   user_email = "example@example.com"
