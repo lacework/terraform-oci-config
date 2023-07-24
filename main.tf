@@ -48,6 +48,16 @@ data "oci_identity_region_subscriptions" "home_region" {
   }
 }
 
+# wait for X seconds for things to settle down on the OCI side
+# before trying to create the Lacework external integration
+resource "time_sleep" "wait_time" {
+  create_duration = var.wait_time
+  depends_on = [
+    module.lacework_oci_credentials,
+    oci_identity_policy.lacework_policy
+  ]
+}
+
 resource "lacework_integration_oci_cfg" "lacework_integration" {
   count     = var.create ? 1 : 0
   name      = var.integration_name
