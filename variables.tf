@@ -54,3 +54,8 @@ variable "integration_name" {
   description = "Label for the OCI integration used within the Lacework platform"
 }
 
+variable "wait_time" {
+  type        = string
+  default     = "10s"
+  description = "Amount of time to wait before the next resource is provisioned"
+}

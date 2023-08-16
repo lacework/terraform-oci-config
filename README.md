@@ -22,12 +22,13 @@ account.
 |------|---------|
 | <a name="provider_lacework"></a> [lacework](#provider\_lacework) | >= 1.9.0 |
 | <a name="provider_oci"></a> [oci](#provider\_oci) | >= 5.2.0 |
+| <a name="provider_time"></a> [time](#provider\_time) | n/a |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_lacework_oci_credentials"></a> [lacework\_oci\_credentials](#module\_lacework\_oci\_credentials) | lacework/iam-user/oci | >= 0.2.0 |
+| <a name="module_lacework_oci_credentials"></a> [lacework\_oci\_credentials](#module\_lacework\_oci\_credentials) | lacework/iam-user/oci | ~> 0.3 |
 
 ## Resources
 
@@ -35,6 +36,7 @@ account.
 |------|------|
 | [lacework_integration_oci_cfg.lacework_integration](https://registry.terraform.io/providers/lacework/lacework/latest/docs/resources/integration_oci_cfg) | resource |
 | [oci_identity_policy.lacework_policy](https://registry.terraform.io/providers/oracle/oci/latest/docs/resources/identity_policy) | resource |
+| [time_sleep.wait_time](https://registry.terraform.io/providers/hashicorp/time/latest/docs/resources/sleep) | resource |
 | [oci_identity_region_subscriptions.home_region](https://registry.terraform.io/providers/oracle/oci/latest/docs/data-sources/identity_region_subscriptions) | data source |
 | [oci_identity_tenancy.tenancy](https://registry.terraform.io/providers/oracle/oci/latest/docs/data-sources/identity_tenancy) | data source |
 
@@ -43,7 +45,7 @@ account.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_create"></a> [create](#input\_create) | Set to false to prevent module from creating any resources | `bool` | `true` | no |
-| <a name="input_freeform_tags"></a> [freeform\_tags](#input\_freeform\_tags) | freeform tags for the resources created for Lacework CSPM integration | `map` | `{}` | no |
+| <a name="input_freeform_tags"></a> [freeform\_tags](#input\_freeform\_tags) | freeform tags for the resources created for Lacework CSPM integration | `map(any)` | `{}` | no |
 | <a name="input_group_name"></a> [group\_name](#input\_group\_name) | Name of the IAM group for the Lacework user (overrides name\_prefix) | `string` | `""` | no |
 | <a name="input_integration_name"></a> [integration\_name](#input\_integration\_name) | Label for the OCI integration used within the Lacework platform | `string` | `"OCI CSPM Integration"` | no |
 | <a name="input_name_prefix"></a> [name\_prefix](#input\_name\_prefix) | The OCI resources will have the names ${name\_prefix}\_{user,group,policy} | `string` | `"lacework_cspm_integration"` | no |
@@ -51,6 +53,7 @@ account.
 | <a name="input_tenancy_id"></a> [tenancy\_id](#input\_tenancy\_id) | OCID of the OCI tenancy to be integrated with Lacework | `string` | n/a | yes |
 | <a name="input_user_email"></a> [user\_email](#input\_user\_email) | Email associated with the created user | `string` | n/a | yes |
 | <a name="input_user_name"></a> [user\_name](#input\_user\_name) | Name of the IAM user used for Lacework integration (overrides name\_prefix) | `string` | `""` | no |
+| <a name="input_wait_time"></a> [wait\_time](#input\_wait\_time) | Amount of time to wait before the next resource is provisioned | `string` | `"10s"` | no |
 
 ## Outputs
 

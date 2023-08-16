@@ -61,6 +61,16 @@ data "oci_identity_region_subscriptions" "home_region" {
   }
 }
 
+# wait for X seconds for things to settle down on the OCI side
+# before trying to create the Lacework external integration
+resource "time_sleep" "wait_time" {
+  create_duration = var.wait_time
+  depends_on = [
+    module.lacework_oci_credentials,
+    oci_identity_policy.lacework_policy
+  ]
+}
+
 resource "lacework_integration_oci_cfg" "lacework_integration" {
   count     = var.create ? 1 : 0
   name      = var.integration_name
@@ -72,5 +82,5 @@ resource "lacework_integration_oci_cfg" "lacework_integration" {
   home_region = data.oci_identity_region_subscriptions.home_region.region_subscriptions[0].region_name
   tenant_id   = data.oci_identity_tenancy.tenancy.id
   tenant_name = data.oci_identity_tenancy.tenancy.name
-  depends_on  = [oci_identity_policy.lacework_policy]
+  depends_on  = [time_sleep.wait_time]
 }
