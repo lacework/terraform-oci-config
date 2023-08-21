@@ -8,6 +8,12 @@
 A Terraform Module for configuring a CSPM integration with Lacework for an OCI cloud
 account.
 
+## Troubleshooting
+
+Sometimes it takes a moment for OCI resources to become available after they've been created.
+When that happens, this module will sometimes fail `terraform apply`. Rerunning `terraform
+apply` will solve it, since by then the created OCI resources will have become available.
+
 ## Requirements
 
 | Name | Version |
