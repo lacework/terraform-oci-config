@@ -13,7 +13,7 @@ account.
 Sometimes it takes a moment for OCI resources to become available after they've been created.
 When that happens, this module will sometimes fail `terraform apply`. Rerunning `terraform
 apply` will solve it, since by then the created OCI resources will have become available.
-
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -21,6 +21,7 @@ apply` will solve it, since by then the created OCI resources will have become a
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14 |
 | <a name="requirement_lacework"></a> [lacework](#requirement\_lacework) | >= 1.9.0 |
 | <a name="requirement_oci"></a> [oci](#requirement\_oci) | >= 5.2.0 |
+| <a name="requirement_time"></a> [time](#requirement\_time) | ~> 0.9 |
 
 ## Providers
 
@@ -28,7 +29,7 @@ apply` will solve it, since by then the created OCI resources will have become a
 |------|---------|
 | <a name="provider_lacework"></a> [lacework](#provider\_lacework) | >= 1.9.0 |
 | <a name="provider_oci"></a> [oci](#provider\_oci) | >= 5.2.0 |
-| <a name="provider_time"></a> [time](#provider\_time) | n/a |
+| <a name="provider_time"></a> [time](#provider\_time) | ~> 0.9 |
 
 ## Modules
 
@@ -73,3 +74,4 @@ apply` will solve it, since by then the created OCI resources will have become a
 | <a name="output_policy_ocid"></a> [policy\_ocid](#output\_policy\_ocid) | OCID of the policy created to manage permissions for the integration user |
 | <a name="output_user_name"></a> [user\_name](#output\_user\_name) | The user name of the user created for Lacework integration |
 | <a name="output_user_ocid"></a> [user\_ocid](#output\_user\_ocid) | OCID of the user created for the Lacework integration |
+<!-- END_TF_DOCS -->
