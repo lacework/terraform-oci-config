@@ -26,7 +26,7 @@ variable "freeform_tags" {
 
 variable "name_prefix" {
   type        = string
-  default     = "lacework_cspm_integration"
+  default     = "lw_cspm"
   description = "The OCI resources will have the names $${name_prefix}_{user,group,policy}"
 }
 
