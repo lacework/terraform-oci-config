@@ -1,5 +1,11 @@
 locals {
-  policy_name = length(var.policy_name) > 0 ? var.policy_name : "${var.name_prefix}_policy"
+  policy_name = length(var.policy_name) > 0 ? var.policy_name : "${var.name_prefix}_policy_${random_id.uniq.hex}"
+  user_name = length(var.user_name) > 0 ? var.user_name : "${var.name_prefix}_user_${random_id.uniq.hex}"
+  group_name = length(var.group_name) > 0 ? var.group_name : "${var.name_prefix}_group_${random_id.uniq.hex}"
+}
+
+resource "random_id" "uniq" {
+  byte_length = 4
 }
 
 module "lacework_oci_credentials" {
@@ -10,8 +16,8 @@ module "lacework_oci_credentials" {
   freeform_tags = var.freeform_tags
   email         = var.user_email
   name_prefix   = var.name_prefix
-  user_name     = var.user_name
-  group_name    = var.group_name
+  user_name     = local.user_name
+  group_name    = local.group_name
 }
 
 resource "oci_identity_policy" "lacework_policy" {
@@ -21,31 +27,30 @@ resource "oci_identity_policy" "lacework_policy" {
   name           = local.policy_name
   freeform_tags  = var.freeform_tags
   statements = [
+    # Keep alphabetical order to avoid duplicates
     "Allow group '${module.lacework_oci_credentials.group_name}' to inspect compartments in tenancy",
-    "Allow group '${module.lacework_oci_credentials.group_name}' to read buckets in tenancy",
-    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect volumes in tenancy",
-    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect security-lists in tenancy",
-    "Allow group '${module.lacework_oci_credentials.group_name}' to read users in tenancy",
-    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect groups in tenancy",
-    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect policies in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to inspect domains in tenancy",
-    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect tag-defaults in tenancy",
-    "Allow group '${module.lacework_oci_credentials.group_name}' to read instances in tenancy",
-    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect subnets in tenancy",
-    "Allow group '${module.lacework_oci_credentials.group_name}' to read network-security-groups in tenancy",
-    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect policies in tenancy",
-    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect tenancies in tenancy",
-    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect subnets in tenancy",
-    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect route-tables in tenancy",
-    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect internet-gateways in tenancy",
-    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect load-balancers in tenancy",
-    "Allow group '${module.lacework_oci_credentials.group_name}' to read compute-clusters in tenancy",
+    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect groups in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to inspect instance-images in tenancy",
-    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect vnic-attachments in tenancy",
-    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect volume-attachments in tenancy",
-    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect vcns in tenancy",
+    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect internet-gateways in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to inspect leaf-certificates in tenancy",
-    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect vnics in tenancy"
+    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect load-balancers in tenancy",
+    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect policies in tenancy",
+    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect route-tables in tenancy",
+    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect security-lists in tenancy",
+    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect subnets in tenancy",
+    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect tag-defaults in tenancy",
+    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect tenancies in tenancy",
+    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect vcns in tenancy",
+    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect vnic-attachments in tenancy",
+    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect vnics in tenancy",
+    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect volume-attachments in tenancy",
+    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect volumes in tenancy",
+    "Allow group '${module.lacework_oci_credentials.group_name}' to read buckets in tenancy",
+    "Allow group '${module.lacework_oci_credentials.group_name}' to read compute-clusters in tenancy",
+    "Allow group '${module.lacework_oci_credentials.group_name}' to read instances in tenancy",
+    "Allow group '${module.lacework_oci_credentials.group_name}' to read network-security-groups in tenancy",
+    "Allow group '${module.lacework_oci_credentials.group_name}' to read users in tenancy"
   ]
 }
 
