@@ -29,6 +29,7 @@ apply` will solve it, since by then the created OCI resources will have become a
 |------|---------|
 | <a name="provider_lacework"></a> [lacework](#provider\_lacework) | >= 1.9.0 |
 | <a name="provider_oci"></a> [oci](#provider\_oci) | >= 5.2.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | n/a |
 | <a name="provider_time"></a> [time](#provider\_time) | ~> 0.9 |
 
 ## Modules
@@ -43,6 +44,7 @@ apply` will solve it, since by then the created OCI resources will have become a
 |------|------|
 | [lacework_integration_oci_cfg.lacework_integration](https://registry.terraform.io/providers/lacework/lacework/latest/docs/resources/integration_oci_cfg) | resource |
 | [oci_identity_policy.lacework_policy](https://registry.terraform.io/providers/oracle/oci/latest/docs/resources/identity_policy) | resource |
+| [random_id.uniq](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id) | resource |
 | [time_sleep.wait_time](https://registry.terraform.io/providers/hashicorp/time/latest/docs/resources/sleep) | resource |
 | [oci_identity_region_subscriptions.home_region](https://registry.terraform.io/providers/oracle/oci/latest/docs/data-sources/identity_region_subscriptions) | data source |
 | [oci_identity_tenancy.tenancy](https://registry.terraform.io/providers/oracle/oci/latest/docs/data-sources/identity_tenancy) | data source |
@@ -55,7 +57,7 @@ apply` will solve it, since by then the created OCI resources will have become a
 | <a name="input_freeform_tags"></a> [freeform\_tags](#input\_freeform\_tags) | freeform tags for the resources created for Lacework CSPM integration | `map(any)` | `{}` | no |
 | <a name="input_group_name"></a> [group\_name](#input\_group\_name) | Name of the IAM group for the Lacework user (overrides name\_prefix) | `string` | `""` | no |
 | <a name="input_integration_name"></a> [integration\_name](#input\_integration\_name) | Label for the OCI integration used within the Lacework platform | `string` | `"OCI CSPM Integration"` | no |
-| <a name="input_name_prefix"></a> [name\_prefix](#input\_name\_prefix) | The OCI resources will have the names ${name\_prefix}\_{user,group,policy} | `string` | `"lacework_cspm_integration"` | no |
+| <a name="input_name_prefix"></a> [name\_prefix](#input\_name\_prefix) | The OCI resources will have the names ${name\_prefix}\_{user,group,policy} | `string` | `"lw_cspm"` | no |
 | <a name="input_policy_name"></a> [policy\_name](#input\_policy\_name) | Name of the policy that governs the Lacework user's permissions (overrides name\_prefix) | `string` | `""` | no |
 | <a name="input_tenancy_id"></a> [tenancy\_id](#input\_tenancy\_id) | OCID of the OCI tenancy to be integrated with Lacework | `string` | n/a | yes |
 | <a name="input_user_email"></a> [user\_email](#input\_user\_email) | Email associated with the created user | `string` | n/a | yes |
