@@ -2,6 +2,9 @@ locals {
   policy_name = length(var.policy_name) > 0 ? var.policy_name : "${var.name_prefix}_policy_${random_id.uniq.hex}"
   user_name = length(var.user_name) > 0 ? var.user_name : "${var.name_prefix}_user_${random_id.uniq.hex}"
   group_name = length(var.group_name) > 0 ? var.group_name : "${var.name_prefix}_group_${random_id.uniq.hex}"
+  version_file   = "${abspath(path.module)}/VERSION"
+  module_name    = basename(abspath(path.module))
+  module_version = fileexists(local.version_file) ? file(local.version_file) : ""
 }
 
 resource "random_id" "uniq" {
@@ -88,4 +91,9 @@ resource "lacework_integration_oci_cfg" "lacework_integration" {
   tenant_id   = data.oci_identity_tenancy.tenancy.id
   tenant_name = data.oci_identity_tenancy.tenancy.name
   depends_on  = [time_sleep.wait_time]
+}
+
+data "lacework_metric_module" "lwmetrics" {
+  name    = local.module_name
+  version = local.module_version
 }
