@@ -5,7 +5,7 @@ terraform {
     time = "~> 0.9"
     lacework = {
       source  = "lacework/lacework"
-      version = ">= 1.9.0"
+      version = "~> 1.18"
     }
     oci = {
       source  = "oracle/oci"
