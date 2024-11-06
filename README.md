@@ -19,7 +19,7 @@ apply` will solve it, since by then the created OCI resources will have become a
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14 |
-| <a name="requirement_lacework"></a> [lacework](#requirement\_lacework) | ~> 1.18 |
+| <a name="requirement_lacework"></a> [lacework](#requirement\_lacework) | ~> 2.0 |
 | <a name="requirement_oci"></a> [oci](#requirement\_oci) | >= 5.2.0 |
 | <a name="requirement_time"></a> [time](#requirement\_time) | ~> 0.9 |
 
@@ -27,7 +27,7 @@ apply` will solve it, since by then the created OCI resources will have become a
 
 | Name | Version |
 |------|---------|
-| <a name="provider_lacework"></a> [lacework](#provider\_lacework) | ~> 1.18 |
+| <a name="provider_lacework"></a> [lacework](#provider\_lacework) | ~> 2.0 |
 | <a name="provider_oci"></a> [oci](#provider\_oci) | >= 5.2.0 |
 | <a name="provider_random"></a> [random](#provider\_random) | n/a |
 | <a name="provider_time"></a> [time](#provider\_time) | ~> 0.9 |
