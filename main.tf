@@ -31,6 +31,7 @@ resource "oci_identity_policy" "lacework_policy" {
   freeform_tags  = var.freeform_tags
   statements = [
     # Keep alphabetical order to avoid duplicates
+    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect cloud-guard-config in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to inspect compartments in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to inspect domains in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to inspect groups in tenancy",
