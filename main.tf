@@ -39,6 +39,7 @@ resource "oci_identity_policy" "lacework_policy" {
     "Allow group '${module.lacework_oci_credentials.group_name}' to inspect internet-gateways in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to inspect leaf-certificates in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to inspect load-balancers in tenancy",
+    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect log-groups in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to inspect ons-subscriptions in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to inspect ons-topics in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to inspect policies in tenancy",
