@@ -63,7 +63,7 @@ apply` will solve it, since by then the created OCI resources will have become a
 | <a name="input_tenancy_id"></a> [tenancy\_id](#input\_tenancy\_id) | OCID of the OCI tenancy to be integrated with Lacework | `string` | n/a | yes |
 | <a name="input_user_email"></a> [user\_email](#input\_user\_email) | Email associated with the created user | `string` | n/a | yes |
 | <a name="input_user_name"></a> [user\_name](#input\_user\_name) | Name of the IAM user used for Lacework integration (overrides name\_prefix) | `string` | `""` | no |
-| <a name="input_wait_time"></a> [wait\_time](#input\_wait\_time) | Amount of time to wait before the next resource is provisioned | `string` | `"10s"` | no |
+| <a name="input_wait_time"></a> [wait\_time](#input\_wait\_time) | Amount of time to wait before the next resource is provisioned | `string` | `"180s"` | no |
 
 ## Outputs
 

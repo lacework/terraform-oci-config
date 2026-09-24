@@ -1,7 +1,7 @@
 locals {
-  policy_name = length(var.policy_name) > 0 ? var.policy_name : "${var.name_prefix}_policy_${random_id.uniq.hex}"
-  user_name = length(var.user_name) > 0 ? var.user_name : "${var.name_prefix}_user_${random_id.uniq.hex}"
-  group_name = length(var.group_name) > 0 ? var.group_name : "${var.name_prefix}_group_${random_id.uniq.hex}"
+  policy_name    = length(var.policy_name) > 0 ? var.policy_name : "${var.name_prefix}_policy_${random_id.uniq.hex}"
+  user_name      = length(var.user_name) > 0 ? var.user_name : "${var.name_prefix}_user_${random_id.uniq.hex}"
+  group_name     = length(var.group_name) > 0 ? var.group_name : "${var.name_prefix}_group_${random_id.uniq.hex}"
   version_file   = "${abspath(path.module)}/VERSION"
   module_name    = "terraform-oci-config"
   module_version = fileexists(local.version_file) ? file(local.version_file) : ""
@@ -77,7 +77,7 @@ data "oci_identity_region_subscriptions" "home_region" {
 # wait for X seconds for things to settle down on the OCI side
 # before trying to create the Lacework external integration
 resource "time_sleep" "wait_time" {
-  create_duration = var.wait_time
+  create_duration = var.create ? var.wait_time : "0s"
   depends_on = [
     module.lacework_oci_credentials,
     oci_identity_policy.lacework_policy
