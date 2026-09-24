@@ -56,6 +56,6 @@ variable "integration_name" {
 
 variable "wait_time" {
   type        = string
-  default     = "10s"
+  default     = "180s"
   description = "Amount of time to wait before the next resource is provisioned"
 }
