@@ -48,6 +48,7 @@ resource "oci_identity_policy" "lacework_policy" {
     "Allow group '${module.lacework_oci_credentials.group_name}' to inspect subnets in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to inspect tag-defaults in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to inspect tenancies in tenancy",
+    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect vaults in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to inspect vcns in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to inspect vnic-attachments in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to inspect vnics in tenancy",
@@ -57,6 +58,7 @@ resource "oci_identity_policy" "lacework_policy" {
     "Allow group '${module.lacework_oci_credentials.group_name}' to read cloudevents-rules in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to read compute-clusters in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to read instances in tenancy",
+    "Allow group '${module.lacework_oci_credentials.group_name}' to read keys in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to read network-security-groups in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to read users in tenancy"
   ]
