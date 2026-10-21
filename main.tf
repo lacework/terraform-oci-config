@@ -35,6 +35,7 @@ resource "oci_identity_policy" "lacework_policy" {
     "Allow group '${module.lacework_oci_credentials.group_name}' to inspect cloud-guard-config in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to inspect compartments in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to inspect domains in tenancy",
+    "Allow group '${module.lacework_oci_credentials.group_name}' to inspect file-systems in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to inspect groups in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to inspect instance-images in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to inspect internet-gateways in tenancy",
