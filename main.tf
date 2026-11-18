@@ -62,6 +62,7 @@ resource "oci_identity_policy" "lacework_policy" {
     "Allow group '${module.lacework_oci_credentials.group_name}' to read instances in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to read keys in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to read network-security-groups in tenancy",
+    "Allow group '${module.lacework_oci_credentials.group_name}' to read tag-namespaces in tenancy",
     "Allow group '${module.lacework_oci_credentials.group_name}' to read users in tenancy"
   ]
 }
